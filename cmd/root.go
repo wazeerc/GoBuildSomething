@@ -13,13 +13,48 @@ import (
 	"github.com/spf13/cobra"
 )
 
-var rootCmd = &cobra.Command{
-	Use:   "GoBuildSomething",
-	Short: "A tool to quickly start a new project 🚀",
-	Long: `GoBuildSomething is a minimal CLI tool built with Go that helps you to quickly scaffold a new project.
+var (
+	version = "1.0.0"
+	rootCmd = &cobra.Command{
+		Use:     "GoBuildSomething",
+		Version: version,
+		Short:   "A tool to quickly start a new project 🚀",
+		Long: `GoBuildSomething is a minimal CLI tool built with Go that helps you to quickly scaffold a new project.
 
 Simply provide a project name and optional path (defaults to Desktop) to get started with an already initialized Git repository.`,
-	Run: runPrompts,
+		Run: runPrompts,
+	}
+)
+
+func helpMessage() string {
+	return `Usage:
+  GoBuildSomething [flags]
+
+Available Commands:
+  help        Help about any command
+  version     Print the version number
+
+Flags:
+  -h, --help      Show this help message
+  -v, --version   Print version information
+
+Examples:
+  # Show help
+  GoBuildSomething --help
+
+  # Show version
+  GoBuildSomething --version
+
+  # Run interactive project wizard
+  GoBuildSomething
+
+Configuration:
+  The tool will store your default project path in a config file.
+  Config location: ./config.json
+
+Note:
+  The tool will create a new directory with your project name
+  and initialize it as a Git repository.`
 }
 
 func runPrompts(cmd *cobra.Command, args []string) {
@@ -59,5 +94,7 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	cobra.OnInitialize()
+	rootCmd.SetHelpTemplate(helpMessage())
+	rootCmd.Flags().BoolP("version", "v", false, "Print version information")
 }
