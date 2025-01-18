@@ -43,5 +43,5 @@ go run main.go --help
 or
 
 ```
-.GoBuildSomething -h
+GoBuildSomething -h
 ```
