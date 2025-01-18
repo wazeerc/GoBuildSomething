@@ -21,13 +21,13 @@ I just wanted to automate the process of creating new projects, I got tired of d
 
 2. Run the program:
 
-  ```
+  ```bash
   cd GoBuildSomething && go run main.go
   ```
 
   or
 
-  ```
+  ```bash
   go build && go install
   GoBuildSomething
   ```
@@ -36,12 +36,12 @@ I just wanted to automate the process of creating new projects, I got tired of d
 
 To get help on how to use the program, run:
 
-```
+```bash
 go run main.go --help
 ```
 
 or
 
-```
+```bash
 GoBuildSomething -h
 ```
