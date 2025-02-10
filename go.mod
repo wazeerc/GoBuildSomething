@@ -1,6 +1,6 @@
 module GoBuildSomething
 
-go 1.23.2
+go 1.21
 
 require (
 	github.com/manifoldco/promptui v0.9.0
