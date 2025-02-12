@@ -45,3 +45,6 @@ or
 ```bash
 GoBuildSomething -h
 ```
+
+> [!Note]
+> You can edit the `config.json` file to change the default path. It will be located at `~/go/bin`.
